@@ -1,6 +1,6 @@
 
 
-Let $K := S^n_+$ denote the set of positive semi-definite matrices in $R^{n \times n}$.
+Let $K := S^n_+$ denote the set of symmetric positive semi-definite matrices in $R^{n \times n}$.
 
 Then for all matrices $\mathbf M \in K$, by definition of being semi-positive
 $$
@@ -63,7 +63,7 @@ $$
 \end{align}
 $$
 
-and since matrix multiplication is distributive,
+for some $\alpha_1, \alpha_2$. And since matrix multiplication is distributive, we have that
 $$
 \begin{align}
     \mathbf x' [\lambda \mathbf M_1 + (1-\lambda) \mathbf M_2] \mathbf x
@@ -78,7 +78,7 @@ $$
 \end{align}
 $$
 
-Thus $\lambda \mathbf M_1 + (1-\lambda) \mathbf M_2$ is also positive semi-definite and in $K$, meaning $K$ is convex.
+Then $\lambda \mathbf M_1 + (1-\lambda) \mathbf M_2$ is also positive semi-definite and therefore in $K$, meaning $K$ is convex.
 
 
 **(iii) Proof that $K$ is closed.**
@@ -86,7 +86,52 @@ Thus $\lambda \mathbf M_1 + (1-\lambda) \mathbf M_2$ is also positive semi-defin
 To show that $K$ is closed, we want to show that
 $$
 \begin{align}
-    
+    K = cl K = \{\mathbf M \in S_n : K \cap N_\varepsilon(\mathbf M) \ne \varnothing, \varepsilon > 0\},
+\end{align}
+$$
+where the $\varepsilon$-neighborhood for $\varepsilon > 0$ is defined as
+$$
+\begin{align}
+    N_\varepsilon(\mathbf M) =
+    \{
+        \mathbf A \in S_n : d(\mathbf A, \mathbf M) =  \sqrt{\text{Tr}\mathbf{[(A-M)(A-M)]}} < \varepsilon
+    \}.
+\end{align}
+$$
+
+Note these standard properties of trace for any matrices $\mathbf X, \mathbf Y \in S^n$:
+$$
+\begin{align}
+    \text{Tr}(\mathbf X + \mathbf Y)
+    &=
+    \text{Tr}\mathbf X + \text{Tr}\mathbf Y
+    ,
+    \\
+    \text{Tr}\mathbf{XY}
+    &=
+    \text{Tr}\mathbf{YX}
+    .
+\end{align}
+$$
+
+Let $\epsilon > 0$ and let $\mathbf A \in N_\varepsilon(\mathbf M)$. Then we have that
+$$
+\begin{align}
+    \varepsilon^2 >
+    \text{Tr}[\mathbf{(A-M)(A-M)}]
+    &=
+    \text{Tr}[\mathbf{(AA - AM - MA + MM)}]
+    \\
+    &=
+    \text{Tr}\mathbf{AA}
+    - \text{Tr}\mathbf{AM}
+    - \text{Tr}\mathbf{MA}
+    + \text{Tr}\mathbf{MM}
+    \\
+    &=
+    \text{Tr}\mathbf{AA}
+    - 2\text{Tr}\mathbf{AM}
+    + \text{Tr}\mathbf{MM}
 \end{align}
 $$
 
